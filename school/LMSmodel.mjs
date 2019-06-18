@@ -4,32 +4,28 @@ export class LMSModel {
     }
 
     add(obj) {
-        if (!obj || typeof obj == "object") {
+        if (obj && typeof obj === 'object' && obj.id) {
             this.data.set(obj.id, obj)
         } else {
             throw new Error("Errror")
         }
-        console.log(this.data)
     }
+
 
     remove(obj) {
-        if (obj || typeof obj == "object") {
-            this.data.delete(obj.id)
-        } else if(!(this.data.get(obj))) {
-            throw new Error("Errror")
+        if (this.data.has(obj.id)) {
+            this.data.delete(obj.id);
+        } else {
+            throw new Error('Error delete');
         }
-        console.log(this.data)
     }
 
-    verify(obj){
-        return this.data.has(obj.id)
+    verify(obj) {
+        return this.data.has(obj.id) ? true : false;
     }
-    readAll(){
-        if(arguments.length > 0){
-            throw new Error("Errror")
-        }else{
-            return Array.from(this.data.values())
-        }
+
+    readAll() {
+        return [this.data]
     }
-    
+
 }
