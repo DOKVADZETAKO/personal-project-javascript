@@ -58,6 +58,13 @@ export class TeachersModel {
 
     }
 
+   
+    update(teacherId, updatedProfile){
+        ValidatorModel.validator(updatedProfile, this.schema);
+        return this.data.set(teacherId, updatedProfile)
+    }
+
+
     remove(teacherId) {
         if (this.data.has(teacherId)) {
             this.data.delete(teacherId);
@@ -68,42 +75,6 @@ export class TeachersModel {
 
     }
 
-    update(id, obj){
-        
-    }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//     update(id, obj) {
-//         if (!id || typeof id.id != "number") {
-//             throw new Error("Error")
-//         }
-//         else if (!obj || typeof obj != "object") {
-//             throw new Error("Error")
-//         }
-
-//         const user = this.data.get(id.id)
-//         if (user) {
-//             if (ValidatorModel.validator(obj)) {
-//                 this.data.set(id, { ...user, ...obj })
-//                 return this.data.get(id)
-//             }
-
-//         } else {
-//             throw new Error("Error")
-//         }
-//     }
-
 
 
