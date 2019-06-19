@@ -21,20 +21,18 @@ export class PupilsModel {
             "description": "string"
         }
 
-
     }
-
 
     add(pupil) {
         if (ValidatorModel.validator(pupil, this.schema)) {
             let id = new Date().getUTCMilliseconds() + Math.floor(Math.random() * 100);
-            pupil.id =id;
+            pupil.id = id;
             this.data2.set(id, pupil);
             return this.data2.get(id);
 
         }
         else {
-            throw new Error("Not valid parameters!");
+            throw new Error("Not valid");
         }
     }
 
@@ -66,11 +64,3 @@ export class PupilsModel {
     }
 
 }
-
-
-
-
-
-
-
-

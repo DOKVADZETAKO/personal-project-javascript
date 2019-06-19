@@ -25,19 +25,16 @@ const asds = new SubjectsModel({
 
 const lms = new LMSModel();
 
-// lms.add(history);
-// lms.add(asds);
-// lms.remove(asds);
+lms.add(history);
+lms.add(asds);
+lms.remove(asds);
 
 
-// console.log(lms.verify(history));
-
-// console.log(lms.readAll());
-// [
-//   {
-//     subjectId: null
-//   }
-// ]
+[
+  {
+    subjectId: null
+  }
+]
 
 // finish second module
 
@@ -50,7 +47,7 @@ let as = {
     last: '225'
   },
   image: '55',
-  dateOfBirth: "552", // format date
+  dateOfBirth: "552", 
   emails: [
     {
       email: "string@asdasd.com",
@@ -63,7 +60,7 @@ let as = {
       primary: true
     }
   ],
-  sex: "male", // male or female
+  sex: "male",
   subjects: [
     {
       subject: "asdasd"
@@ -111,7 +108,7 @@ let data = {
     last: "dokvadze"
   },
   image: "sdasdas",
-  dateOfBirth: "002.02.1111", // format date
+  dateOfBirth: "002.02.1111", 
   emails: [
     {
       email: "string@asdasd.com",
@@ -124,7 +121,7 @@ let data = {
       primary: false
     }
   ],
-  sex: "male", // male or female
+  sex: "male",
   subjects: [
     {
       subject: "stasdasdring"
@@ -139,7 +136,7 @@ let updatedProfile = {
     last: "dokvadze"
   },
   image: "sdasdas",
-  dateOfBirth: "002.02.1111", // format date
+  dateOfBirth: "002.02.1111",
   emails: [
     {
       email: "string@asdasd.com",
@@ -152,7 +149,7 @@ let updatedProfile = {
       primary: false
     }
   ],
-  sex: "male", // male or female
+  sex: "male",
   subjects: [
     {
       subject: "stasdasdring"
@@ -166,20 +163,12 @@ const teachers = new TeachersModel();
 
 const teacherId = teachers.add(data);
 
-// console.log(data)
-
-// teachers.read(teacherId)
-
-
-// console.log(teacherId)
+teachers.read(teacherId)
 
 const teacherId2 = teachers.update(teacherId, updatedProfile)
 
-// console.log(teacherId2)
+teachers.remove(teacherId)
 
-// teachers.remove(teacherId)
-
-// console.log(teachers.read(teacherId))
 
 //finish teachers module
 
@@ -191,14 +180,14 @@ let data2 = {
     last: "dokvadze"
   },
   image: "sdasdas",
-  dateOfBirth: "002.02.1111", // format date
+  dateOfBirth: "002.02.1111",
   phones: [
     {
       phone: '5982562622',
       primary: false
     }
   ],
-  sex: "male", // male or female
+  sex: "male",
   description: "asdasd",
 };
 
@@ -208,14 +197,14 @@ let updatedProfile2 = {
     last: "dokvadze"
   },
   image: "sdasdas",
-  dateOfBirth: "002.02.1111", // format date
+  dateOfBirth: "002.02.1111",
   phones: [
     {
       phone: '5982562622',
       primary: false
     }
   ],
-  sex: "male", // male or female
+  sex: "male",
   description: "asdasd",
 };
 
@@ -234,11 +223,13 @@ pupils.remove(pupil.id)
 
 //finish pupils module
 
+
+
 const room = 236;
 const groups = new GroupsModel();
 const groupId = groups.add(room);
 
-console.log(groups.addPupil(groupId, pupil))
+// console.log(groups.addPupil(groupId, pupil))
 
 groups.removePupil(groupId, pupil.id);
 
@@ -261,41 +252,39 @@ groups.readAll()
 // finish groups model
 
 
-// const pupilId = pupil.id;
-// const teacherId3 = teacherId;
-// const gradebooks = new GradeBooksModel(groups, teachers, lms);
+const pupilId = pupil.id;
+const teacherId3 = teacherId;
+const gradebooks = new GradeBooksModel(groups, teachers, lms);
 
-// const level = 1;
-// const gradebook = gradebooks.add(level, groups.id);
+const level = 1;
+const gradebookId = gradebooks.add(level, groupId);
 
-// console.log(gradebook)
+gradebooks.clear();
 
-// gradebooks.clear();
+const record = {
+  pupilId: pupilId,
+  teacherId: teacherId3,
+  subjectId: history.id,
+  lesson: 1,
+  mark: 9
+};
 
-// const record = {
-//   pupilId: pupilId,
-//   teacherId: teacherId3,
-//   subjectId: history.id,
-//   lesson: 1,
-//   mark: 9
-// };
+let asss = {
+  name: 'Oliver Black',
+  records: [
+    {
+      teacher: 'Elizabeth Holms',
+      subject: 'History',
+      lesson: 1,
+      mark: 9
+    }
+  ]
+}
 
+console.log(record)
 
 // gradebooks.addRecord(gradebookId, record);
 
-// const oliver = gradebooks.read(gradebookId, pupilId);
-// let data3 = {
-//   name: 'Oliver Black',
-//   records: [
-//     {
-//       teacher: 'Elizabeth Holms',
-//       subject: 'History',
-//       lesson: 1,
-//       mark: 9
-//     }
-//   ]
-// }
+const oliver = gradebooks.read(gradebookId, pupilId);
 
-
-
-
+console.log(gradebooks.add(level, groups.id))
